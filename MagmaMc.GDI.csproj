@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>MagmaMc.GDI_Functions</AssemblyName>
     <StartupObject>MagmaMc.GDI.GDI</StartupObject>
-    <BaseIntermediateOutputPath>bin\obj\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>obj/</BaseIntermediateOutputPath>
     <ErrorReport>send</ErrorReport>
     <Authors>MagmaMc</Authors>
     <Company>Magma, Inc</Company>
