@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>MagmaMc.GDI</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>MagmaMc.GDI_Functions</AssemblyName>
+    <StartupObject>MagmaMc.GDI.GDI</StartupObject>
+    <BaseIntermediateOutputPath>bin\obj\</BaseIntermediateOutputPath>
+    <ErrorReport>send</ErrorReport>
+    <Authors>MagmaMc</Authors>
+    <Company>Magma, Inc</Company>
+    <Product>MagmaMc.GDI</Product>
+    <Copyright>
+      "MagmaMc.GDI License
+
+      This software, MagmaMc.GDI, is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
+
+      Permission is granted to anyone to use this software for any purpose, including commercial applications, and to distribute it freely, subject to the following restrictions:
+
+      The origin of this software must not be misrepresented; you must not claim that you wrote the original software.
+
+      You may not modify or redistribute the software in any form.
+
+      This notice may not be removed or altered from any distribution.
+
+      By using this software, you agree to the terms and conditions of this license."
+    </Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>
