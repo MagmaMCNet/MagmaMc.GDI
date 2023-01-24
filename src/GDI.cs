@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Runtime.Versioning;
 using static MagmaMc.GDI.src.Utils;
 using System.Windows;
+using System.Threading;
 
 namespace MagmaMc.GDI.src
 {

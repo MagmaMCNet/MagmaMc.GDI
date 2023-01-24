@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Reflection.Metadata;
-using System.Reflection;
 using static MagmaMc.GDI.src.Utils;
 using Rect = System.Drawing.Rectangle;
 
