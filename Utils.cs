@@ -1,9 +1,35 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace MagmaMc.GDI
 {
     public static class Utils
     {
+
+        /// <summary>
+        /// Is Here Becuase Wallpaper Engine Breaks With Rendering
+        /// </summary>
+        /// <param name="AskUser"></param>
+
+        public static void StopWallpaperEngine(bool AskUser)
+        {
+            Process[] processes = Process.GetProcessesByName("wallpaper32");
+            if (processes.Length == 0)
+                return;
+            if (AskUser)
+            {
+                Console.Write("Application Is Asking To Force Close Wallpaper Engine Becuase Of Will Be Unable To Render Properly,\nWould You Like It To Do This (Y: Yes, N: No): ");
+                char key = Console.ReadKey().KeyChar;
+                if (key == 'n')
+                    return;
+
+            }
+            foreach(Process process in processes)
+            {
+                process.Kill();
+            }
+        }
+
         #region Imports
         [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
         public static extern IntPtr GetDC(IntPtr hWnd);
@@ -43,8 +69,7 @@ namespace MagmaMc.GDI
             BLACKNESS = 0x00000042,
             WHITENESS = 0x00FF0062,
         }
-#endregion
-
+        #endregion
 
     }
 }

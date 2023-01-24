@@ -11,12 +11,12 @@ namespace MagmaMc.GDI
 
     public class Line
     {
-        #region
-        private static IntPtr BaseWindow = GetDesktopWindow();
-        private static IntPtr Window;
-        private static Graphics ScreenGraphics;
-        public TernaryRaster DefaultSetting { get; private set; } = TernaryRaster.None;
-        public Pen DrawingPen { get; private set; }
+
+        #region Static
+        public static IntPtr BaseWindow { get; private set; } = GetDesktopWindow();
+        public static IntPtr Window { get; private set; }
+        public static Graphics ScreenGraphics { get; private set; }
+        private static Pen DrawingPen;
 
         public static void StartRender()
         {
@@ -27,15 +27,11 @@ namespace MagmaMc.GDI
         #endregion
 
 
+
         public Line(Pen Pen)
         {
             DrawingPen = Pen;
 
-        }
-        public Line(Pen Pen, TernaryRaster TRO)
-        {
-            DrawingPen = Pen;
-            DefaultSetting = TRO;
         }
 
 
