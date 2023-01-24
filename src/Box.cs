@@ -2,9 +2,10 @@
 using System.Drawing;
 using System.Reflection.Metadata;
 using System.Reflection;
-using static MagmaMc.GDI.Utils;
+using static MagmaMc.GDI.src.Utils;
 using Rect = System.Drawing.Rectangle;
-namespace MagmaMc.GDI
+
+namespace MagmaMc.GDI.src
 {
     public static class Box
     {
@@ -25,9 +26,9 @@ namespace MagmaMc.GDI
         public static void Render(TernaryRaster TernaryRaster, Rect Source, Rect Destination)
         {
             StartRender();
-            StretchBlt(Window, 
+            StretchBlt(Window,
                 Destination.X, Destination.Y, Destination.Width, Destination.Height, // Destination
-                Window, 
+                Window,
                 Source.X, Source.Y, Source.Width, Source.Height, // Source
                 TernaryRaster);
             EndRender();
@@ -54,7 +55,7 @@ namespace MagmaMc.GDI
         }
 
 
-        public static void Render(Pen Pen, UInt16 PosX, UInt16 PosY, UInt16 ScaleX, UInt16 ScaleY, bool Fill = false)
+        public static void Render(Pen Pen, ushort PosX, ushort PosY, ushort ScaleX, ushort ScaleY, bool Fill = false)
         {
             StartRender();
             Rect rect = new Rect(new Point(PosX, PosY), new Size(ScaleX, ScaleY));
@@ -64,16 +65,16 @@ namespace MagmaMc.GDI
                 ScreenGraphics.DrawRectangle(Pen, rect);
             EndRender();
         }
-        public static void Render(Pen Pen, Point Position, Point Scale, bool Fill = false) => 
-            Render(Pen, (UInt16)Position.X, (UInt16)Position.Y, (UInt16)Scale.X, (UInt16)Scale.Y, Fill);
+        public static void Render(Pen Pen, Point Position, Point Scale, bool Fill = false) =>
+            Render(Pen, (ushort)Position.X, (ushort)Position.Y, (ushort)Scale.X, (ushort)Scale.Y, Fill);
 
-        public static void Render(Color Color, Point Position, Point Scale, bool Fill = false) => 
-            Render(new Pen(Color, 2), (UInt16)Position.X, (UInt16)Position.Y, (UInt16)Scale.X, (UInt16)Scale.Y, Fill);
+        public static void Render(Color Color, Point Position, Point Scale, bool Fill = false) =>
+            Render(new Pen(Color, 2), (ushort)Position.X, (ushort)Position.Y, (ushort)Scale.X, (ushort)Scale.Y, Fill);
 
-        public static void Render(Color Color, Byte Width, Point Position, Point Scale, bool Fill = false) =>
-            Render(new Pen(Color, Width), (UInt16)Position.X, (UInt16)Position.Y, (UInt16)Scale.X, (UInt16)Scale.Y, Fill);
-        public static void Render(Color Color, Byte Width, UInt16 PosX, UInt16 PosY, UInt16 ScaleX, UInt16 ScaleY, bool Fill = false) =>
-            Render(new Pen(Color, Width), (UInt16)PosX, (UInt16)PosY, (UInt16)ScaleX, (UInt16)ScaleY, Fill);
+        public static void Render(Color Color, byte Width, Point Position, Point Scale, bool Fill = false) =>
+            Render(new Pen(Color, Width), (ushort)Position.X, (ushort)Position.Y, (ushort)Scale.X, (ushort)Scale.Y, Fill);
+        public static void Render(Color Color, byte Width, ushort PosX, ushort PosY, ushort ScaleX, ushort ScaleY, bool Fill = false) =>
+            Render(new Pen(Color, Width), PosX, PosY, ScaleX, ScaleY, Fill);
 
     }
 }

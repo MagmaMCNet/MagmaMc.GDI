@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using static MagmaMc.GDI.Utils;
-namespace MagmaMc.GDI
+using static MagmaMc.GDI.src.Utils;
+namespace MagmaMc.GDI.src
 {
     public static class Image
     {
@@ -20,7 +20,7 @@ namespace MagmaMc.GDI
         public static void EndRender() => ReleaseDC(BaseWindow, Window);
         #endregion
 
-        public static void Render(Bitmap BitmapImage, UInt16 PosX, UInt16 PosY, float ResX, float ResY)
+        public static void Render(Bitmap BitmapImage, ushort PosX, ushort PosY, float ResX, float ResY)
         {
             StartRender();
             BitmapImage.SetResolution(ResX, ResY);
@@ -28,17 +28,17 @@ namespace MagmaMc.GDI
             EndRender();
         }
 
-        public static void Render(Icon IconImage, Point Position) => 
-                Render(IconImage.ToBitmap(), (UInt16)Position.X, (UInt16)Position.Y, 1, 1);
+        public static void Render(Icon IconImage, Point Position) =>
+                Render(IconImage.ToBitmap(), (ushort)Position.X, (ushort)Position.Y, 1, 1);
 
-        public static void Render(Icon IconImage, Point Position, Point Resolution) => 
-                Render(IconImage.ToBitmap(), (UInt16)Position.X, (UInt16)Position.Y, Resolution.X, Resolution.Y);
+        public static void Render(Icon IconImage, Point Position, Point Resolution) =>
+                Render(IconImage.ToBitmap(), (ushort)Position.X, (ushort)Position.Y, Resolution.X, Resolution.Y);
 
 
         public static void Render(Bitmap BitmapImage, Point Position) =>
-                Render(BitmapImage, (UInt16)Position.X, (UInt16)Position.Y, BitmapImage.HorizontalResolution, BitmapImage.VerticalResolution);
+                Render(BitmapImage, (ushort)Position.X, (ushort)Position.Y, BitmapImage.HorizontalResolution, BitmapImage.VerticalResolution);
 
-        public static void Render(Bitmap BitmapImage, Point Position, Point Resolution) => 
-                Render(BitmapImage, (UInt16)Position.X, (UInt16)Position.Y, Resolution.X, Resolution.Y);
+        public static void Render(Bitmap BitmapImage, Point Position, Point Resolution) =>
+                Render(BitmapImage, (ushort)Position.X, (ushort)Position.Y, Resolution.X, Resolution.Y);
     }
 }

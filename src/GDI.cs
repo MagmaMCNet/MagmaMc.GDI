@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Runtime.Versioning;
-using static MagmaMc.GDI.Utils;
+using static MagmaMc.GDI.src.Utils;
 using System.Windows;
 
-namespace MagmaMc.GDI
+namespace MagmaMc.GDI.src
 {
     /*
      * Static Line Generator *
@@ -26,7 +26,7 @@ namespace MagmaMc.GDI
 
                 Line.Render(Color.White, new Point(200, 50), new Point(1000, 100));
 
-                Image.Render((Bitmap)Bitmap.FromFile("icon.png"), new Point(100, 500));
+                Image.Render((Bitmap)System.Drawing.Image.FromFile("icon.png"), new Point(100, 500));
 
                 Box.Render(new Pen(Color.White), new Point(300, 200), new Point(300, 200), true);
 

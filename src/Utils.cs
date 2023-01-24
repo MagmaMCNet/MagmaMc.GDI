@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace MagmaMc.GDI
+namespace MagmaMc.GDI.src
 {
     public static class Utils
     {
@@ -24,7 +24,7 @@ namespace MagmaMc.GDI
                     return;
 
             }
-            foreach(Process process in processes)
+            foreach (Process process in processes)
             {
                 process.Kill();
             }
