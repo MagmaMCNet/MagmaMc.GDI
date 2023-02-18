@@ -1,64 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MagmaMc.GDI.src.Utils;
+﻿using System.Drawing;
 
-namespace MagmaMc.GDI.src
+namespace MagmaMc.GDI
 {
-
     public class Line
     {
+        private static ScreenRenderer Renderer = new ScreenRenderer();
+        private readonly Pen DrawingPen;
 
-        #region Static
-        public static IntPtr BaseWindow { get; private set; } = GetDesktopWindow();
-        public static IntPtr Window { get; private set; }
-        public static Graphics ScreenGraphics { get; private set; }
-        private static Pen DrawingPen;
-
-        public static void StartRender()
-        {
-            Window = GetDC(BaseWindow);
-            ScreenGraphics = Graphics.FromHdc(Window);
-        }
-        public static void EndRender() => ReleaseDC(BaseWindow, Window);
-        #endregion
-
-
-
+        
         public Line(Pen Pen)
         {
             DrawingPen = Pen;
 
         }
 
+        // Dynamic
 
-        public void Render(Point p1, Point p2)
+        public void Render(Point StartPoint, Point EndPoint)
         {
-            StartRender();
-            ScreenGraphics.DrawLine(DrawingPen, p1, p2);
-            EndRender();
+            Renderer.StartRender();
+            Renderer.ScreenGraphics.DrawLine(DrawingPen, StartPoint, EndPoint);
+            Renderer.EndRender();
         }
 
-        public void Render(ushort x1, ushort y1, ushort x2, ushort y2)
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="StartX">The Start Points X Value</param>
+        /// <param name="StartY">The Start Points Y Value</param>
+        /// <param name="EndX">The End Points X Value</param>
+        /// <param name="EndY">The End Points Y Value</param>
+        public void Render(short StartX, short StartY, short EndX, short EndY)
         {
-            StartRender();
-            ScreenGraphics.DrawLine(DrawingPen, new Point(x1, y1), new Point(x2, y2));
-            EndRender();
+            Renderer.StartRender();
+            Renderer.ScreenGraphics.DrawLine(DrawingPen, new Point(StartX, StartY), new Point(EndX, EndY));
+            Renderer.EndRender();
         }
-        public static void Render(Pen Pen, Point p1, Point p2)
+
+        // Static 
+
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="Pen">Pen Object</param>
+        /// <param name="StartX">The Start Point X Value</param>
+        /// <param name="StartY">The Start Point Y Value</param>
+        /// <param name="EndX">The End Point X Value</param>
+        /// <param name="EndY">The End Point Y Value</param>
+        public static void Render(Pen Pen, short StartX, short StartY, short EndX, short EndY)
         {
-            StartRender();
-            ScreenGraphics.DrawLine(Pen, p1, p2);
-            EndRender();
+            Renderer.StartRender();
+            Renderer.ScreenGraphics.DrawLine(Pen, new Point(StartX, StartY), new Point(EndX, EndY));
+            Renderer.EndRender();
 
         }
-        public static void Render(Color color, Point p1, Point p2) => Render(new Pen(color, 2), p1, p2);
-        public static void Render(Color color, byte Width, Point p1, Point p2) => Render(new Pen(color, Width), p1, p2);
-        public static void Render(Pen Pen, ushort X1, ushort Y1, ushort X2, ushort Y2) => Render(Pen, new Point(X1, Y1), new Point(X2, Y2));
-        public static void Render(Color color, ushort X1, ushort Y1, ushort X2, ushort Y2) => Render(new Pen(color, 2), new Point(X1, Y1), new Point(X2, Y2));
-        public static void Render(Color color, byte Width, ushort X1, ushort Y1, ushort X2, ushort Y2) => Render(new Pen(color, Width), new Point(X1, Y1), new Point(X2, Y2));
+        
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="color">Color Of Which To Render The Line</param>
+        /// <param name="StartPoint">Start Point Of Line</param>
+        /// <param name="EndPoint">End Point Of Line</param>
+        public static void Render(Color color, Point StartPoint, Point EndPoint) => 
+                Render(new Pen(color, 2), (short)StartPoint.X, (short)StartPoint.Y, (short)EndPoint.X, (short)EndPoint.Y);
+
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="color">Color Of Which To Render The Line</param>
+        /// <param name="Width">How Thick The Render The Line</param>
+        /// <param name="StartPoint">Start Point Of Line</param>
+        /// <param name="EndPoint">End Point Of Line</param>
+        public static void Render(Color color, byte Width, Point StartPoint, Point EndPoint) => 
+                Render(new Pen(color, Width), (short)StartPoint.X, (short)StartPoint.Y, (short)EndPoint.X, (short)EndPoint.Y);
+
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="color">Color Of Which To Render The Line</param>
+        /// <param name="StartX">The Start Point X Value</param>
+        /// <param name="StartY">The Start Point Y Value</param>
+        /// <param name="EndX">The End Point X Value</param>
+        /// <param name="EndY">The End Point Y Value</param>
+        public static void Render(Color color, short StartX, short StartY, short EndX, short EndY) => 
+                Render(new Pen(color, 2), StartX, StartY, EndX, EndY);
+
+        /// <summary>
+        /// Render Line On To The Users Display
+        /// </summary>
+        /// <param name="color">Color Of Which To Render The Line</param>
+        /// <param name="Width">How Thick The Render The Line</param>
+        /// <param name="StartX">The Start Point X Value</param>
+        /// <param name="StartY">The Start Point Y Value</param>
+        /// <param name="EndX">The End Point X Value</param>
+        /// <param name="EndY">The End Point Y Value</param>
+        public static void Render(Color color, byte Width, short StartX, short StartY, short EndX, short EndY) => 
+            Render(new Pen(color, Width), StartX, StartY, EndX, EndY);
     }
 }

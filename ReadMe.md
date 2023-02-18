@@ -41,8 +41,24 @@ Line.Render(
 
 ### Image
 ```cs
-Image.Render(
-	(Bitmap)System.Drawing.Image.FromFile("icon.png"), // Image To Render
+Graphic.Render(
+	(Bitmap)System.Drawing.Image.FromFile("image.png"), // Image To Render
+	new Point(100, 500) // X, Y Position
+	);
+```
+Can Also Support Icon And GIF
+
+### Icon
+```cs
+Graphic.Render(
+	(Bitmap)System.Drawing.Icon.FromFile("image.ico"), // Image To Render
+	new Point(100, 500) // X, Y Position
+	);
+```
+### GIF
+```cs
+Graphic.Render(
+	new GIF("image.gif"), // Image To Render
 	new Point(100, 500) // X, Y Position
 	);
 ```

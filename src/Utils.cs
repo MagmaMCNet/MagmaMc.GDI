@@ -1,35 +1,86 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace MagmaMc.GDI.src
+namespace MagmaMc.GDI
 {
-    public static class Utils
+    /// <summary>
+    /// GIF Image Base Class
+    /// </summary>
+    public class GIF
+    {
+        public int Frames { get; private set; }
+        public Image Image { get; private set; }
+        public FrameDimension Dimension { get; private set; }
+        // Image Settings
+        public float HorizontalResolution { get; private set; }
+        public float VerticalResolution { get; private set; }
+
+        public GIF(string Path)
+        {
+            Image = Image.FromFile(Path);
+            Set();
+        }
+        public GIF(Image IMG)
+        {
+            Image = Image = IMG;
+            Set();
+        }
+
+        private void Set()
+        {
+            HorizontalResolution = Image.HorizontalResolution;
+            VerticalResolution = Image.VerticalResolution;
+            Dimension = new FrameDimension(Image.FrameDimensionsList[0]);
+            Frames = Image.GetFrameCount(Dimension);
+
+        }
+    }
+        public static class Utils
     {
 
         /// <summary>
-        /// Is Here Becuase Wallpaper Engine Breaks With Rendering
+        /// Is Here Becuase Wallpaper Engine Breaks The Rendering On Every Frame It Updates
         /// </summary>
         /// <param name="AskUser"></param>
 
-        public static void StopWallpaperEngine(bool AskUser)
+        public static void StopWallpaperEngine(bool AskUser = true)
         {
-            Process[] processes = Process.GetProcessesByName("wallpaper32");
-            if (processes.Length == 0)
+            bool CanClose = !AskUser;
+            Process[] WallpaperEngine = Process.GetProcessesByName("wallpaper32");
+            if (WallpaperEngine.Length == 0)
                 return;
             if (AskUser)
             {
-                Console.Write("Application Is Asking To Force Close Wallpaper Engine Becuase Of Will Be Unable To Render Properly,\nWould You Like It To Do This (Y: Yes, N: No): ");
-                char key = Console.ReadKey().KeyChar;
-                if (key == 'n')
-                    return;
-
+                while (true)
+                {
+                    Console.Clear();
+                    Console.Write(
+                     "\nMagmaMc.GDI:\n" +
+                     " There Is A Problem With Rendering Graphics To Screen With Wallpaper Engine,\n" +
+                     " The Program Is Asking To Force Close It,\n" +
+                     " Would You Like To Force Close It,\n" +
+                     " (Y | n):");
+                    char key = Console.ReadKey().KeyChar;
+                    if (key == 'n' || key == 'N')
+                    {
+                        CanClose = false;
+                        return;
+                    }
+                    else if (key == 'y' || key == 'Y')
+                    {
+                        Console.WriteLine();
+                        CanClose = true;
+                        break;
+                    }
+                }
             }
-            foreach (Process process in processes)
-            {
-                process.Kill();
-            }
+            if (CanClose)
+                foreach (Process process in WallpaperEngine) { process.Kill(); }
         }
+
 
         #region Imports
         [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
@@ -70,7 +121,7 @@ namespace MagmaMc.GDI.src
             BLACKNESS = 0x00000042,
             WHITENESS = 0x00FF0062,
         }
-        #endregion
+#endregion
 
     }
 }

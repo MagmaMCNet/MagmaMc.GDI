@@ -1,41 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net48</TargetFrameworks>
+    <TargetFrameworks>net462;net5.0;net6.0;netcoreapp3.1;netstandard21</TargetFrameworks>
     <RootNamespace>MagmaMc.GDI</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AssemblyName>MagmaMc.GDI</AssemblyName>
     <BaseIntermediateOutputPath>obj/</BaseIntermediateOutputPath>
     <ErrorReport>send</ErrorReport>
     <Authors>MagmaMc</Authors>
     <Company>Magma, Inc</Company>
     <Product>MagmaMc.GDI</Product>
-    <Copyright>
-      "MagmaMc.GDI License
-
-      This software, MagmaMc.GDI, is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
-
-      Permission is granted to anyone to use this software for any purpose, including commercial applications, and to distribute it freely, subject to the following restrictions:
-
-      The origin of this software must not be misrepresented; you must not claim that you wrote the original software.
-
-      You may not modify or redistribute the software in any form.
-
-      This notice may not be removed or altered from any distribution.
-
-      By using this software, you agree to the terms and conditions of this license."
-    </Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>MagmaMc.GDI</Title>
-    <Version>0.1.0</Version>
+    <Version>0.3.0</Version>
+    <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <AssemblyName>MagmaMc.GDI</AssemblyName>
+    <PackageReleaseNotes>.csproj Update, Added Documentation, (Added Arc, ScreenRender, Graphic), Fixed Bugs</PackageReleaseNotes>
+    <Copyright>Copyright © 2023</Copyright>
     <RepositoryUrl>https://github.com/SMLkaiellis08/MagmaMc.GDI/</RepositoryUrl>
     <PackageIcon>GDI.png</PackageIcon>
-    <PackageTags>GDI, MagmaMc, Graphics, Shapes, Render, Image</PackageTags>
+    <PackageTags>GDI, MagmaMc, Graphics, Shapes, Renderer, Image, Display, Colors, Screen</PackageTags>
     <NeutralLanguage>en-001</NeutralLanguage>
     <IncludeSymbols>True</IncludeSymbols>
-    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+    <Description>A Similer Way To Render Graphics To The Display</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://www.nuget.org/packages/MagmaMc.GDI/</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AnalysisLevel>6.0-all</AnalysisLevel>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -48,8 +47,24 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard21|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard21|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LICENSE.txt" />
+  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="C:\Users\kaicy\OneDrive - Shaw Education Trust\Pictures\Images\GDI.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </EmbeddedResource>
@@ -64,9 +79,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="LICENSE.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="ReadMe.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
