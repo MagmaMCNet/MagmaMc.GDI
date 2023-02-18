@@ -1,7 +1,7 @@
 ﻿using MagmaMc.GDI;
-using System.Drawing;
 using System.Threading;
-
+using System.Drawing;
+using static MagmaMc.GDI.Utils;
 namespace Testing
 {
 
@@ -10,7 +10,7 @@ namespace Testing
 #if DEBUG
         public static void Main(string[] args)
         {
-            //Utils.StopWallpaperEngine(true);
+            Utils.StopWallpaperEngine(true);
             while (true)
             {
 

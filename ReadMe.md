@@ -40,7 +40,7 @@ Line.Render(
 ```
 
 ### Image
-```cs
+```c#
 Graphic.Render(
 	(Bitmap)System.Drawing.Image.FromFile("image.png"), // Image To Render
 	new Point(100, 500) // X, Y Position
@@ -49,14 +49,14 @@ Graphic.Render(
 Can Also Support Icon And GIF
 
 ### Icon
-```cs
+```c#
 Graphic.Render(
 	(Bitmap)System.Drawing.Icon.FromFile("image.ico"), // Image To Render
 	new Point(100, 500) // X, Y Position
 	);
 ```
 ### GIF
-```cs
+```c#
 Graphic.Render(
 	new GIF("image.gif"), // Image To Render
 	new Point(100, 500) // X, Y Position

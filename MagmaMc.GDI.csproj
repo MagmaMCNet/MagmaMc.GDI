@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net462;net5.0;net6.0;netcoreapp3.1;netstandard21</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2</TargetFrameworks>
     <RootNamespace>MagmaMc.GDI</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
     <OutputType>Exe</OutputType>
@@ -13,10 +13,10 @@
     <Product>MagmaMc.GDI</Product>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>MagmaMc.GDI</Title>
-    <Version>0.3.0</Version>
-    <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <Version>0.3.2</Version>
+    <AssemblyVersion>0.3.2.0</AssemblyVersion>
     <AssemblyName>MagmaMc.GDI</AssemblyName>
-    <PackageReleaseNotes>.csproj Update, Added Documentation, (Added Arc, ScreenRender, Graphic), Fixed Bugs</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed Stack Overflow Bug On Graphic.Render and support for older versions</PackageReleaseNotes>
     <Copyright>Copyright © 2023</Copyright>
     <RepositoryUrl>https://github.com/SMLkaiellis08/MagmaMc.GDI/</RepositoryUrl>
     <PackageIcon>GDI.png</PackageIcon>
@@ -25,11 +25,10 @@
     <IncludeSymbols>True</IncludeSymbols>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-    <Description>A Similer Way To Render Graphics To The Display</Description>
+    <Description>A Simpler Way To Render Graphics To The Display</Description>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.nuget.org/packages/MagmaMc.GDI/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AnalysisLevel>6.0-all</AnalysisLevel>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -75,7 +74,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0"/>
   </ItemGroup>
 
   <ItemGroup>

@@ -18,7 +18,7 @@ namespace MagmaMc.GDI
             Renderer.StartRender();
             BitmapImage.SetResolution(ResX*BitmapImage.HorizontalResolution, ResY * BitmapImage.VerticalResolution);
             Renderer.ScreenGraphics.DrawImage(BitmapImage, PositionX, PositionY);
-            Renderer.EndRender();
+            //Renderer.EndRender();
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace MagmaMc.GDI
                             bitmap.SetResolution(ResX * bitmap.HorizontalResolution, ResY * bitmap.VerticalResolution);
                             screenRenderer.ScreenGraphics.DrawImage(bitmap, new Point(PosX, PosY));
                         }
-                        screenRenderer.EndRender();
+                        //screenRenderer.EndRender();
                         Rendered = true;
                     } catch { }
             });

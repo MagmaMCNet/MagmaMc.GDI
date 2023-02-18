@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using static MagmaMc.GDI.Utils;
 using Rect = System.Drawing.Rectangle;
-
 namespace MagmaMc.GDI
 {
     public class Box

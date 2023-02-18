@@ -82,7 +82,7 @@ namespace MagmaMc.GDI
         }
 
 
-        #region Imports
+#region Imports
         [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
         public static extern IntPtr GetDC(IntPtr hWnd);
 
@@ -104,7 +104,7 @@ namespace MagmaMc.GDI
 
         public enum TernaryRaster
         {
-            None = 0,
+            NONE = 0,
             SRCCOPY = 0x00CC0020,
             SRCPAINT = 0x00EE0086,
             SRCAND = 0x008800C6,
